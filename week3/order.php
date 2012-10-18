@@ -17,10 +17,29 @@
 	<body>
 	
 		<div class="banner"></div>
-		
+						<table>
+				<?php
+include("config.php");
+include("menu.php");
+
+?>
+</table>
 		<div class="orderarea">
 		<!-- This is where we'll put our form -->
-		
+
+
+<table>
+
+		<form action="submit.php" method="post">
+<label>Name: <input class="forminput" type="text" name="name" /></label>
+<label>Email: <input class="forminput" type="text" name="email" autocapitalize="off" /></label>
+<select name="book">
+<option value=””></option>
+</select>
+<input type="submit" class="medium red awesome" value="Order &raquo;" />
+</form>			
+
+<table/>
 		
 		</div>
 			

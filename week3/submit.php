@@ -26,6 +26,22 @@
 			// Let's put in the email function somewhere here
 			// but really it could be anywhere
 			
+			function sendmail($email, $name, $title)
+{
+    
+    $to      = $email;
+    $subject = 'Maya Order Confirmation';
+    $message = 'Hello '.$name.',<br /><br />This email is to confirm your order for the following book from Maya:<br /><br /><strong>'.$title.'</strong><br /><br />Please wait for the next update email which will contain shipping information.';
+    $headers = 'From: Maya Book Service <info@mayabooks.com>' . "\r\n" .
+    'MIME-Version: 1.0' . "\r\n" .
+    'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
+    'Reply-To: Maya Book Service <mayabooks@mayabooks.com>' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+    
+    mail($to, $subject, $message, $headers);
+    
+}
+			
 			// Take in parameters
 			$name = $_POST["name"];
 			$book = $_POST["book"];
@@ -35,7 +51,7 @@
 			// Insert into orders
 			// but oops query is not defined... yet
 			
-			
+			$query = "insert into orders (name, email, time, book) values ('".$name."','".$email."', '".date("D F d Y",$t)."', '".$book."')";
 			$result = mysql_query($query);
 			
 			if ($result) {
